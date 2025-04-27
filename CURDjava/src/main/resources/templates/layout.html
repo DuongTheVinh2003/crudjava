@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Personal Finance App</title>
+    <link href="/static/css/style.css" rel="stylesheet">
+</head>
+<body>
+<nav>
+    <div sec:authorize="isAuthenticated()">
+        <a href="transaction.html">Transactions</a> |
+        <a href="transaction.html/new">Add Transaction</a> |
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+    <div sec:authorize="!isAuthenticated()">
+        <a href="login.html">Login</a> |
+        <a href="Register.html">Register</a>
+    </div>
+</nav>
+<div class="container">
+    <th:block th:replace="${content}"/>
+</div>
+</body>
+</html>
